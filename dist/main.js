@@ -1,0 +1,1 @@
+(()=>{let e=function(e,o,t,s,c="general",l="active"){return{title:"play chess",description:"play chess on chess.com",dueDate:"5/6/2023",priority:"low",project:c,status:l}}();console.log(e),console.log(e.description)})();
