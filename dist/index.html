@@ -37,7 +37,7 @@
       <div class="right-panel bg-slate-300 "> 
         <h2 class="font-bold text-5xl"> General </h2>
 
-        <button  data-modal-target="addTask-modal" data-modal-toggle="addTask-modal" class="bg-transparent hover:bg-slate-600 text-slate-900 font-semibold hover:text-white py-2 px-4 border border-slate-600 hover:border-transparent rounded text-lg inline-flex items-center w-[170px] justify-center">
+        <button id="addTaskButton" type="button" data-modal-target="addTask-modal" data-modal-toggle="addTask-modal" class="bg-transparent hover:bg-slate-600 text-slate-900 font-semibold hover:text-white py-2 px-4 border border-slate-600 hover:border-transparent rounded text-lg inline-flex items-center w-[170px] justify-center">
           Add Task 
         </button>
       
@@ -84,7 +84,7 @@
 
 
 
-  <div id="addTask-modal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50  w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full flex justify-center items-center " type="button">
+  <div id="addTask-modal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50  w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full flex justify-center items-center hidden" type="button">
     <div class="relative w-full max-w-md max-h-full">
         <!-- Modal content -->
         <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
@@ -97,15 +97,24 @@
                 <form class="space-y-6" action="#">
                     <div>
                         <label for="taskName" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Enter Task Name</label>
-                        <input type="text" name="text" id="taskName" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500  dark:placeholder-gray-400 dark:text-white " required pattern=".{2,10}">
+                        <input type="text" name="text" id="taskName" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500  dark:placeholder-gray-400 dark:text-white " required pattern=".{1,10}">
 
                     </div>
                     <div>
                       <label for="taskDate" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Enter Due Date</label>
-                      <input id="taskDate" datepicker type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-
+                      <input id="taskDate" datepicker type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
                   </div>
-                    <button id="addProjectSubmit" type="submit" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 ">Create</button>
+
+                  <div class="flex items-center mb-4">
+                    <input checked id="taskPriorityLow" type="radio" value="low" name="default-radio" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                    <label for="taskPriorityLow" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">low priority</label>
+                 </div>
+                 <div class="flex items-center">
+                    <input id="taskPriorityHigh" type="radio" value="high" name="default-radio" class="w-4 h-4 text-red-600 bg-gray-100 border-gray-300 focus:ring-red-500 dark:focus:ring-red-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                    <label for="taskPriorityHigh" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">High Priority</label>
+                 </div>
+
+                    <button id="createTaskButton" type="submit" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 ">Create</button>
                     
                     
                 </form>
