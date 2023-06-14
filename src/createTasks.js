@@ -1,6 +1,6 @@
 function createTask(
   title,
-  description,
+  // description,
   dueDate,
   priority,
   project = 'general',
@@ -8,7 +8,7 @@ function createTask(
 ) {
   return {
     title: title,
-    description: description,
+    // description: description,
     dueDate: dueDate,
     priority: priority,
     project: project,
