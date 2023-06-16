@@ -6,7 +6,7 @@ import { createTask } from './createTasks';
 import { displayTask } from './displayTask';
 
 // initializePage();
-// let generalTasks = [];
+let tasks = [];
 
 const addProjectBtn = document.getElementById('addProjectSubmit');
 addProjectBtn.addEventListener('click', (e) => {
@@ -15,6 +15,8 @@ addProjectBtn.addEventListener('click', (e) => {
 });
 
 const addTaskBtn = document.getElementById('createTaskButton');
+const currentProject = document.getElementById('currentProject');
+
 addTaskBtn.addEventListener('click', (e) => {
   e.preventDefault();
   const taskName = document.getElementById('taskName').value;
@@ -24,9 +26,10 @@ addTaskBtn.addEventListener('click', (e) => {
   if (taskPriorityHigh.checked) {
     taskPriority = 'high';
   }
-
+  // const project = currentProject.textContent
   // console.log(createTask(taskName, taskDate, taskPriority));
-  // generalTasks.push(createTask(taskName, taskDate, taskPriority));
+  tasks.push(createTask(taskName, taskDate, taskPriority));
   // console.log(generalTasks[0]);
   displayTask(taskName, taskDate, taskPriority);
 });
+

@@ -45,8 +45,12 @@ function displayTask(title, date, taskPriority) {
 
   const priority = document.createElement('div');
   priority.classList.add('priority');
-  priority.textContent = taskPriority;
+  priority.textContent = `priority: ${taskPriority}`;
   taskDiv.appendChild(priority);
+
+  taskBtn.addEventListener('click', () => {
+    taskBtn.parentNode.remove();
+  })
 }
 
 export { displayTask };
