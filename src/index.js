@@ -9,11 +9,13 @@ import { displayTask } from './displayTask';
 let tasks = [];
 
 const addProjectBtn = document.getElementById('addProjectSubmit');
-const addProjectModal = document.getElementById('addProject-modal');
+
 addProjectBtn.addEventListener('click', (e) => {
   // e.preventDefault();
   addProject(tasks);
-  // addProjectModal.classList.add('hidden');
+
+  const addProjectModalClose = document.getElementById('addProjectModalClose');
+  addProjectModalClose.click();
 });
 
 const addTaskBtn = document.getElementById('createTaskButton');
@@ -36,6 +38,10 @@ addTaskBtn.addEventListener('click', (e) => {
   // displayTask(taskName, taskDate, taskPriority);
   // console.log(tasks)
   displayTask(tasks, project);
+
+  const addTaskModalClose = document.getElementById('addTaskModalClose');
+  addTaskModalClose.click();
+ 
 });
 
 const generalNavBtn = document.getElementById('generalNavBtn');
