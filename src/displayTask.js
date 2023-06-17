@@ -66,6 +66,8 @@ function displayTask(tasks, projectName) {
       taskBtn.addEventListener('click', () => {
         taskBtn.parentNode.remove();
         tasks.splice(i, 1);
+        // console.log(tasks)
+        localStorage.setItem('tasks', JSON.stringify(tasks));
         // console.log(tasks);
       });
     }

@@ -7,6 +7,13 @@ import { displayTask } from './displayTask';
 
 // initializePage();
 let tasks = [];
+if(localStorage.length > 0) {
+  tasks = JSON.parse(localStorage.getItem('tasks'));
+}
+// tasks = [];
+// localStorage.setItem('tasks', JSON.stringify(tasks));
+// console.log(tasks)
+displayTask(tasks, 'General');
 
 const addProjectBtn = document.getElementById('addProjectSubmit');
 
@@ -39,9 +46,10 @@ addTaskBtn.addEventListener('click', (e) => {
   // console.log(tasks)
   displayTask(tasks, project);
 
+  localStorage.setItem('tasks', JSON.stringify(tasks));
+  
   const addTaskModalClose = document.getElementById('addTaskModalClose');
   addTaskModalClose.click();
- 
 });
 
 const generalNavBtn = document.getElementById('generalNavBtn');

@@ -14,20 +14,20 @@
       Todo App
     </header>
     <div class="container max-w-none">
-      <div class="left-panel bg-slate-500 min-w-fit">
+      <div class="left-panel bg-slate-500 min-w-fit overflow-hidden max-h-full">
         <ul>
           <li><button id="generalNavBtn" class="bg-transparent hover:bg-slate-600 text-slate-900 font-semibold hover:text-white py-2 px-4 border border-slate-600 hover:border-transparent rounded text-lg inline-flex items-center w-[170px] justify-center">
             <svg class="fill-current w-7 h-7 mr-2 m-0" viewBox="0 -960 960 960"><path d="m394-80-70-123H189l-87-154 69-123-69-123 87-154h135l70-123h172l70 123h135l87 154-69 123 69 123-87 154H636L566-80H394Zm243-429h100l54-94-54-94H637l-54 94 54 94ZM430-388h100l54-92-54-92H430l-54 92 54 92Zm0-244h100l54-94-54-94H430l-54 94 54 94ZM224-509h100l54-94-54-94H224l-54 94 54 94Zm0 246h100l54-94-55-94H223l-54 94 55 94Zm206 123h100l54-94-54-94H430l-54 94 54 94Zm207-123h100l54-94-54-94H637l-51 94 51 94Z"/></svg>
             <span>General</span>
           </button></li>
-          <li class="font-semibold text-slate-900">
-            Projects 
+          <li class="font-semibold text-slate-900 mt-5 h-80">
+            Projects
             <!-- this is where i left -->
-            <ul id="listOfProjects" class="mt-5">
+            <ul id="listOfProjects" class="mt-5 overflow-auto">
               <!-- <button class="bg-transparent hover:bg-slate-600 text-slate-900 font-semibold hover:text-white py-2 px-4 border border-slate-600 hover:border-transparent rounded text-base">first project</button> -->
             </ul>
           </li>
-          <li><button data-modal-target="addProject-modal" data-modal-toggle="addProject-modal" class="bg-transparent hover:bg-slate-600 text-slate-900 font-semibold hover:text-white py-2 px-4 border border-slate-600 hover:border-transparent rounded text-lg inline-flex items-center w-[170px]">
+          <li><button data-modal-target="addProject-modal" data-modal-toggle="addProject-modal" class="bg-transparent hover:bg-slate-600 text-slate-900 font-semibold hover:text-white py-2 px-4 border border-slate-600 hover:border-transparent rounded text-lg inline-flex items-center w-[170px] mt-10">
             <svg class="fill-current w-7 h-7 mr-2 m-0" viewBox="0 -960 960 960"><path d="M450-200v-250H200v-60h250v-250h60v250h250v60H510v250h-60Z"/></svg>
             <span> Add Project</span>
           </button>
