@@ -9,13 +9,15 @@ import { displayTask } from './displayTask';
 let tasks = [];
 
 const addProjectBtn = document.getElementById('addProjectSubmit');
+const addProjectModal = document.getElementById('addProject-modal');
 addProjectBtn.addEventListener('click', (e) => {
-  e.preventDefault();
-  addProject();
+  // e.preventDefault();
+  addProject(tasks);
+  // addProjectModal.classList.add('hidden');
 });
 
 const addTaskBtn = document.getElementById('createTaskButton');
-const currentProject = document.getElementById('currentProject');
+const currentProject = document.getElementById('project-title-header');
 
 addTaskBtn.addEventListener('click', (e) => {
   e.preventDefault();
@@ -26,10 +28,19 @@ addTaskBtn.addEventListener('click', (e) => {
   if (taskPriorityHigh.checked) {
     taskPriority = 'high';
   }
-  // const project = currentProject.textContent
+  const project = currentProject.textContent;
+  // console.log(project);
   // console.log(createTask(taskName, taskDate, taskPriority));
-  tasks.push(createTask(taskName, taskDate, taskPriority));
+  tasks.push(createTask(taskName, taskDate, taskPriority, project));
   // console.log(generalTasks[0]);
-  displayTask(taskName, taskDate, taskPriority);
+  // displayTask(taskName, taskDate, taskPriority);
+  // console.log(tasks)
+  displayTask(tasks, project);
 });
 
+const generalNavBtn = document.getElementById('generalNavBtn');
+generalNavBtn.addEventListener('click', () => {
+  currentProject.textContent = 'General';
+  // console.log(tasks);
+  displayTask(tasks, 'General');
+});
