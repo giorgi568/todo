@@ -10,9 +10,14 @@ let tasks = [];
 if(localStorage.length > 0) {
   tasks = JSON.parse(localStorage.getItem('tasks'));
 }
+console.log(localStorage.getItem('tasks').length == 2)
 // tasks = [];
 // localStorage.setItem('tasks', JSON.stringify(tasks));
 // console.log(tasks)
+
+let projects = [];
+
+
 displayTask(tasks, 'General');
 
 const addProjectBtn = document.getElementById('addProjectSubmit');

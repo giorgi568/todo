@@ -15,7 +15,7 @@ function displayTask(tasks, projectName) {
 
       const taskDiv = document.createElement('div');
       taskDiv.classList.add(
-        'w-5/6',
+        'w-11/12',
         'bg-slate-500',
         'h-[40px]',
         'rounded-sm',

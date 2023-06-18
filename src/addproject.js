@@ -23,7 +23,8 @@ function addProject(tasks) {
     'rounded',
     'text-base',
     'flex',
-    'justify-between'
+    'justify-between',
+    'items-center'
   );
   newProjectBtn.textContent = PjInput;
 
@@ -62,8 +63,9 @@ function addProject(tasks) {
     displayTask(tasks, PjInput);
   });
 
-  closeBtn.addEventListener('click', () => {
+  closeBtn.addEventListener('click', (e) => {
     newProjectBtn.remove();
+    e.stopPropagation();
   });
 }
 
