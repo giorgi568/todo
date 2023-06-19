@@ -12,6 +12,7 @@ function displayTask(tasks, projectName) {
       let title = tasks[i].title;
       let date = tasks[i].dueDate;
       let taskPriority = tasks[i].priority;
+      let project = tasks[i].project
 
       const taskDiv = document.createElement('div');
       taskDiv.classList.add(
@@ -62,11 +63,36 @@ function displayTask(tasks, projectName) {
       priority.classList.add('priority');
       priority.textContent = `priority: ${taskPriority}`;
       taskDiv.appendChild(priority);
+      
+      taskBtn.dataset.title = `${title}`;
+      taskBtn.dataset.date = `${date}`;
+      taskBtn.dataset.priority = `${taskPriority}`;
+      taskBtn.dataset.project = `${project}`;
+      // let n = tasks[i];
+      // console.log(taskBtn.dataset.title);
 
-      taskBtn.addEventListener('click', () => {
-        taskBtn.parentNode.remove();
-        tasks.splice(i, 1);
-        // console.log(tasks)
+      // function updateTasks(nana){
+      //   console.log(nana);
+      // }
+      // updateTasks();
+      // console.log(taskBtn.dataset.taskInfo);
+
+      taskBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        // console.log(tasks);
+        // console.log(i);
+        // console.log(taskBtn.nextSibling.nextSibling);
+        for (const j in tasks) {
+          if (
+            taskBtn.dataset.title == tasks[j].title &&
+            taskBtn.dataset.date == tasks[j].dueDate &&
+            taskBtn.dataset.priority == tasks[j].priority &&
+            taskBtn.dataset.project == tasks[j].project
+            ) {
+            taskBtn.parentNode.remove();
+            tasks.splice(j, 1);
+          }
+        }
         localStorage.setItem('tasks', JSON.stringify(tasks));
         // console.log(tasks);
       });
