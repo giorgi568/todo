@@ -3,6 +3,9 @@ function displayTask(tasks, projectName) {
   //   console.log(task);
   // }
   // console.log(projectName);
+  const h2 = document.getElementById('project-title-header');
+  h2.textContent = projectName;
+
   const listOfTasks = document.getElementById('listOfTasks');
   listOfTasks.textContent = '';
   for (const i in tasks) {

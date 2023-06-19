@@ -1,6 +1,6 @@
 import { displayTask } from './displayTask';
 
-function addProject(tasks) {
+function addProject(tasks, projects) {
   const PjInput = document.getElementById('createProjectInput').value;
   if (PjInput.length < 1 || PjInput.length > 10) {
     return false;
@@ -58,14 +58,39 @@ function addProject(tasks) {
     // h2.textContent = PjInput;
     // h2.classList.add('font-bold', 'text-5xl');
     // rightPanel.appendChild(h2);
-    const h2 = document.getElementById('project-title-header');
-    h2.textContent = PjInput;
+
+    // const h2 = document.getElementById('project-title-header');
+    // h2.textContent = PjInput;
     displayTask(tasks, PjInput);
   });
+  
+  projects.push(PjInput);
+  localStorage.setItem('projects', JSON.stringify(projects));
 
   closeBtn.addEventListener('click', (e) => {
     newProjectBtn.remove();
     e.stopPropagation();
+    for (const j in projects) {
+      if(projects[j] == PjInput){
+        projects.splice(j, 1);
+      }
+    }
+    // for (const k in tasks) {
+    //   console.log(tasks[k].project, PjInput);
+    //   if (tasks[k].project == PjInput) {
+    //     tasks.splice(k, 1);
+    //     localStorage.setItem('tasks', JSON.stringify(tasks));
+    //   }
+    // }
+
+    tasks = tasks.filter(task => {
+      return task.project !== PjInput;
+    });
+    // console.log(tasks)
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+
+    localStorage.setItem('projects', JSON.stringify(projects));
+    displayTask(tasks, 'General');
   });
 }
 

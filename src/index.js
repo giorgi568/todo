@@ -4,10 +4,12 @@ import 'flowbite';
 import { addProject } from './addProject';
 import { createTask } from './createTasks';
 import { displayTask } from './displayTask';
+import { displayProjects } from './displayProjects';
 
 // initializePage();
 let tasks = [];
-if(localStorage.length > 0) {
+// localStorage.setItem('tasks', JSON.stringify(tasks));
+if(localStorage.getItem('tasks').length > 2) {
   tasks = JSON.parse(localStorage.getItem('tasks'));
 }
 // console.log(localStorage.getItem('tasks').length == 2)
@@ -15,16 +17,22 @@ if(localStorage.length > 0) {
 // localStorage.setItem('tasks', JSON.stringify(tasks));
 // console.log(tasks)
 
+// console.log(localStorage.getItem('tasks').length)
 let projects = [];
+// localStorage.setItem('projects', JSON.stringify(projects));
 
+if(localStorage.getItem('projects').length > 2) {
+  projects = JSON.parse(localStorage.getItem('projects'));
+}
 
+displayProjects(projects, tasks);
 displayTask(tasks, 'General');
 
 const addProjectBtn = document.getElementById('addProjectSubmit');
 
 addProjectBtn.addEventListener('click', (e) => {
   // e.preventDefault();
-  addProject(tasks);
+  addProject(tasks, projects);
 
   const addProjectModalClose = document.getElementById('addProjectModalClose');
   addProjectModalClose.click();
@@ -59,7 +67,7 @@ addTaskBtn.addEventListener('click', (e) => {
 
 const generalNavBtn = document.getElementById('generalNavBtn');
 generalNavBtn.addEventListener('click', () => {
-  currentProject.textContent = 'General';
+  // currentProject.textContent = 'General';
   // console.log(tasks);
   displayTask(tasks, 'General');
 });
