@@ -74,6 +74,10 @@ const generalNavBtn = document.getElementById('generalNavBtn');
 generalNavBtn.addEventListener('click', () => {
   // currentProject.textContent = 'General';
   // console.log(tasks);
+
+  //synchronize tasks with localstorege
+  tasks = JSON.parse(localStorage.getItem('tasks'));
+  
   displayTask(tasks, 'General');
 });
 
@@ -82,4 +86,57 @@ logoBtn.addEventListener('click', () => {
   //synchronize tasks with localstorege
   tasks = JSON.parse(localStorage.getItem('tasks'));
   displayTask(tasks, 'General');
+});
+
+const sortByDate = document.getElementById('sortByDate');
+sortByDate.addEventListener('click', () => {
+  //synchronize tasks with localstorege
+  tasks = JSON.parse(localStorage.getItem('tasks'));
+  
+  const currentPjTasks = tasks.filter( task => {
+    return task.project == currentProject.textContent;
+  })
+  
+  // let date1 = new Date(currentPjTasks[0].dueDate).getTime();
+  // let date2;
+  // for(const i in currentPjTasks){
+  //   console.log(currentPjTasks[i].dueDate, date1);
+  //   date2 = new Date(currentPjTasks[i].dueDate).getTime();
+  //   if (date2 < date1) {
+  //     currentPjTasks.splice(i,1);
+  //     currentPjTasks.push(date2);
+  //     date1 = date2;
+  //   }   
+  // }
+  
+  currentPjTasks.sort(function(a,b) {
+    return new Date(a.dueDate).getTime() - new Date(b.dueDate).getTime();
+  });
+
+  displayTask(currentPjTasks, currentProject.textContent);
+});
+
+const sortByPriority = document.getElementById('sortByPriority');
+sortByPriority.addEventListener('click', ()=> {
+  //synchronize tasks with localstorege
+  tasks = JSON.parse(localStorage.getItem('tasks'));
+  
+  const currentPjTasks = tasks.filter( task => {
+    return task.project == currentProject.textContent;
+  })
+
+  currentPjTasks.sort(function(a, b) {
+    if(a.priority == 'low' && b.priority == 'high'){
+      return 1
+    }
+    if(a.priority == 'high' && b.priority == 'low'){
+      return -1
+    }
+    if(a.priority == b.priority){
+      return 0
+    }
+  });
+
+  displayTask(currentPjTasks, currentProject.textContent);
+  console.log('fsefs')
 });
