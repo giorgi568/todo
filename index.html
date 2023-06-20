@@ -40,10 +40,24 @@
       </div>
       <div id="right-panel" class="right-panel bg-slate-300 "> 
         <h2 id="project-title-header" class="font-bold text-5xl">General</h2>
+        <div class="wrapper flex justify-between w-11/12">
+          <button id="addTaskButton" type="button" data-modal-target="addTask-modal" data-modal-toggle="addTask-modal" class="bg-transparent hover:bg-slate-600 text-slate-900 font-semibold hover:text-white py-2 px-4 border border-slate-600 hover:border-transparent rounded text-lg inline-flex items-center w-[170px] justify-center">
+            Add Task 
+          </button>
+          
+          <button id="dropdownButton" data-dropdown-toggle="dropdownHover" data-dropdown-trigger="hover" class="text-white bg-slate-700 hover:bg-slate-800 focus:ring-4 focus:outline-none focus:ring-slate-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center dark:bg-slate-600 dark:hover:bg-slate-700 dark:focus:ring-slate-800" type="button">Sort Tasks <svg class="w-4 h-4 ml-2" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
+          <!-- Dropdown menu -->
+          <div id="dropdownHover" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700">
+              <ul class="py-2 text-sm text-gray-700 dark:text-gray-200 gap-2" aria-labelledby="dropdownButton">
+                <li>
+                  <a href="#" id="sortByDate" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white m-0">Sort By Due Date</a>
+                </li>
+                <li>
+                  <a href="#" id="sortByPriority" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Sort By Priority</a>
+                </li>               
+          </div>
 
-        <button id="addTaskButton" type="button" data-modal-target="addTask-modal" data-modal-toggle="addTask-modal" class="bg-transparent hover:bg-slate-600 text-slate-900 font-semibold hover:text-white py-2 px-4 border border-slate-600 hover:border-transparent rounded text-lg inline-flex items-center w-[170px] justify-center">
-          Add Task 
-        </button>
+        </div>
       
         <div id="listOfTasks" class="tasks text-white flex flex-col gap-2 overflow-auto"> 
         <!-- <div class="w-5/6 bg-slate-500 h-[40px] rounded-sm flex items-center justify-between px-2"> 
