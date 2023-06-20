@@ -10,6 +10,8 @@ let tasks = [];
 // localStorage.setItem('tasks', JSON.stringify(tasks));
 if (localStorage.getItem('tasks') && localStorage.getItem('tasks').length > 2) {
   tasks = JSON.parse(localStorage.getItem('tasks'));
+} else {
+  localStorage.setItem('tasks', JSON.stringify(tasks));
 }
 // console.log(localStorage.getItem('tasks').length == 2)
 // tasks = [];
@@ -21,10 +23,12 @@ let projects = [];
 // localStorage.setItem('projects', JSON.stringify(projects));
 
 if (
-  localStorage.getItem('tasks') &&
+  localStorage.getItem('projects') &&
   localStorage.getItem('projects').length > 2
 ) {
   projects = JSON.parse(localStorage.getItem('projects'));
+}else {
+  localStorage.setItem('projects',JSON.stringify(projects));
 }
 
 displayProjects(projects, tasks);
