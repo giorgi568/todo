@@ -76,3 +76,10 @@ generalNavBtn.addEventListener('click', () => {
   // console.log(tasks);
   displayTask(tasks, 'General');
 });
+
+const logoBtn = document.getElementById('logo-button');
+logoBtn.addEventListener('click', () => {
+  //synchronize tasks with localstorege
+  tasks = JSON.parse(localStorage.getItem('tasks'));
+  displayTask(tasks, 'General');
+});
