@@ -6,10 +6,9 @@ import { createTask } from './createTasks';
 import { displayTask } from './displayTask';
 import { displayProjects } from './displayProjects';
 
-// initializePage();
 let tasks = [];
 // localStorage.setItem('tasks', JSON.stringify(tasks));
-if(localStorage.getItem('tasks').length > 2) {
+if (localStorage.getItem('tasks') && localStorage.getItem('tasks').length > 2) {
   tasks = JSON.parse(localStorage.getItem('tasks'));
 }
 // console.log(localStorage.getItem('tasks').length == 2)
@@ -21,7 +20,10 @@ if(localStorage.getItem('tasks').length > 2) {
 let projects = [];
 // localStorage.setItem('projects', JSON.stringify(projects));
 
-if(localStorage.getItem('projects').length > 2) {
+if (
+  localStorage.getItem('tasks') &&
+  localStorage.getItem('projects').length > 2
+) {
   projects = JSON.parse(localStorage.getItem('projects'));
 }
 
@@ -61,11 +63,10 @@ addTaskBtn.addEventListener('click', (e) => {
   // displayTask(taskName, taskDate, taskPriority);
   // console.log(tasks)
 
-  
   displayTask(tasks, project);
 
   localStorage.setItem('tasks', JSON.stringify(tasks));
-  
+
   const addTaskModalClose = document.getElementById('addTaskModalClose');
   addTaskModalClose.click();
 });
@@ -77,7 +78,7 @@ generalNavBtn.addEventListener('click', () => {
 
   //synchronize tasks with localstorege
   tasks = JSON.parse(localStorage.getItem('tasks'));
-  
+
   displayTask(tasks, 'General');
 });
 
@@ -92,11 +93,11 @@ const sortByDate = document.getElementById('sortByDate');
 sortByDate.addEventListener('click', () => {
   //synchronize tasks with localstorege
   tasks = JSON.parse(localStorage.getItem('tasks'));
-  
-  const currentPjTasks = tasks.filter( task => {
+
+  const currentPjTasks = tasks.filter((task) => {
     return task.project == currentProject.textContent;
-  })
-  
+  });
+
   // let date1 = new Date(currentPjTasks[0].dueDate).getTime();
   // let date2;
   // for(const i in currentPjTasks){
@@ -106,10 +107,10 @@ sortByDate.addEventListener('click', () => {
   //     currentPjTasks.splice(i,1);
   //     currentPjTasks.push(date2);
   //     date1 = date2;
-  //   }   
+  //   }
   // }
-  
-  currentPjTasks.sort(function(a,b) {
+
+  currentPjTasks.sort(function (a, b) {
     return new Date(a.dueDate).getTime() - new Date(b.dueDate).getTime();
   });
 
@@ -117,26 +118,26 @@ sortByDate.addEventListener('click', () => {
 });
 
 const sortByPriority = document.getElementById('sortByPriority');
-sortByPriority.addEventListener('click', ()=> {
+sortByPriority.addEventListener('click', () => {
   //synchronize tasks with localstorege
   tasks = JSON.parse(localStorage.getItem('tasks'));
-  
-  const currentPjTasks = tasks.filter( task => {
-    return task.project == currentProject.textContent;
-  })
 
-  currentPjTasks.sort(function(a, b) {
-    if(a.priority == 'low' && b.priority == 'high'){
-      return 1
+  const currentPjTasks = tasks.filter((task) => {
+    return task.project == currentProject.textContent;
+  });
+
+  currentPjTasks.sort(function (a, b) {
+    if (a.priority == 'low' && b.priority == 'high') {
+      return 1;
     }
-    if(a.priority == 'high' && b.priority == 'low'){
-      return -1
+    if (a.priority == 'high' && b.priority == 'low') {
+      return -1;
     }
-    if(a.priority == b.priority){
-      return 0
+    if (a.priority == b.priority) {
+      return 0;
     }
   });
 
   displayTask(currentPjTasks, currentProject.textContent);
-  console.log('fsefs')
+  console.log('fsefs');
 });
