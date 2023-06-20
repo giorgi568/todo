@@ -60,6 +60,9 @@ function displayProjects(projects, tasks) {
 
       // const h2 = document.getElementById('project-title-header');
       // h2.textContent = PjInput;
+
+      //synchronize tasks with localstorege
+      tasks = JSON.parse(localStorage.getItem('tasks'));
       displayTask(tasks, PjInput);
     });
 

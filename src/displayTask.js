@@ -3,6 +3,7 @@ function displayTask(tasks, projectName) {
   //   console.log(task);
   // }
   // console.log(projectName);
+
   const h2 = document.getElementById('project-title-header');
   h2.textContent = projectName;
 
@@ -82,6 +83,10 @@ function displayTask(tasks, projectName) {
 
       taskBtn.addEventListener('click', (e) => {
         e.stopPropagation();
+        
+        //synchronize tasks with localstorege
+        tasks = JSON.parse(localStorage.getItem('tasks'));
+        
         // console.log(tasks);
         // console.log(i);
         // console.log(taskBtn.nextSibling.nextSibling);

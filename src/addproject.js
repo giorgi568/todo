@@ -61,6 +61,9 @@ function addProject(tasks, projects) {
 
     // const h2 = document.getElementById('project-title-header');
     // h2.textContent = PjInput;
+
+    //synchronize tasks with localstorege
+    tasks = JSON.parse(localStorage.getItem('tasks'));
     displayTask(tasks, PjInput);
   });
   
@@ -91,6 +94,7 @@ function addProject(tasks, projects) {
 
     localStorage.setItem('projects', JSON.stringify(projects));
     displayTask(tasks, 'General');
+    // console.log(tasks);
   });
 }
 

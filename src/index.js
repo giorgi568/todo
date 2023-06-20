@@ -42,6 +42,9 @@ const addTaskBtn = document.getElementById('createTaskButton');
 const currentProject = document.getElementById('project-title-header');
 
 addTaskBtn.addEventListener('click', (e) => {
+  //synchronize tasks with localstorege
+  tasks = JSON.parse(localStorage.getItem('tasks'));
+
   e.preventDefault();
   const taskName = document.getElementById('taskName').value;
   const taskDate = document.getElementById('taskDate').value;
@@ -57,6 +60,8 @@ addTaskBtn.addEventListener('click', (e) => {
   // console.log(generalTasks[0]);
   // displayTask(taskName, taskDate, taskPriority);
   // console.log(tasks)
+
+  
   displayTask(tasks, project);
 
   localStorage.setItem('tasks', JSON.stringify(tasks));
