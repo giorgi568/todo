@@ -27,8 +27,8 @@ if (
   localStorage.getItem('projects').length > 2
 ) {
   projects = JSON.parse(localStorage.getItem('projects'));
-}else {
-  localStorage.setItem('projects',JSON.stringify(projects));
+} else {
+  localStorage.setItem('projects', JSON.stringify(projects));
 }
 
 displayProjects(projects, tasks);
@@ -40,9 +40,39 @@ addProjectBtn.addEventListener('click', (e) => {
   // e.preventDefault();
   addProject(tasks, projects);
 
-  const addProjectModalClose = document.getElementById('addProjectModalClose');
-  addProjectModalClose.click();
+  // checkvalidity();
+  if(checkvalidity()){
+    const addProjectModalClose = document.getElementById('addProjectModalClose');
+    addProjectModalClose.click();
+  }
 });
+
+function checkvalidity() {
+  const input = document.getElementById('createProjectInput');
+  console.log(input.validity);
+  //"Constraint Validation"
+  if (input.validity.valueMissing) {
+    input.setCustomValidity('you need a name for the project');
+    input.reportValidity();
+    input.classList.add('invalidInput');
+    console.log('heyyy');
+    return false;
+  } else if (input.validity.tooLong) {
+    input.setCustomValidity('your input is too long');
+    input.reportValidity();
+    input.classList.add('invalidInput');
+    return false;
+  } else if (input.validity.valid) {
+    input.classList.remove('invalidInput');
+    console.log('gaa');
+    return true;
+  }
+  // to refresh custom validity
+  input.setCustomValidity('');
+}
+window.onload = () => {
+  document.getElementById('createProjectInput').oninput = checkvalidity;
+};
 
 const addTaskBtn = document.getElementById('createTaskButton');
 const currentProject = document.getElementById('project-title-header');
